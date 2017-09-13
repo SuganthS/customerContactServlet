@@ -1,0 +1,52 @@
+.contact-detail-container form 
+{
+  position: relative;
+    z-index: 1;
+   background: #f7fffc;
+    max-width: 360px;
+    margin: 150px auto 100px;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .contact-detail-container input
+  {
+  outline: 0;
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 15px;
+  border: 0;
+  margin: 0 0 0 0;
+  }
+
+
+  .contact-detail-container .button
+  {
+    text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  border : 0;
+  padding: 15px;
+  margin: 0 0 15px;
+  color: #FFFFFF;
+  width: 100%;
+  }
+
+  .contact-detail-container .message {
+  text-align: left;
+  margin: 15px 0 0 0;
+  color: #b3b3b3;
+  font-size: 16px;
+  
+}
+.contact-detail-container .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+body {
+  background: #84E184;
+  }
+  

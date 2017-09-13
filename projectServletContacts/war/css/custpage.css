@@ -1,0 +1,140 @@
+@charset "ISO-8859-1";
+body{
+	    background: -webkit-linear-gradient(left, rgb(140, 0, 198) , rgb(50, 0, 204));
+}
+ul{
+	list-style-type: none;
+}
+
+.customerPageSection{
+	float: left;
+	background-blend-mode: color-burn;
+	margin-top: 3%;
+	margin-left: 2%;
+	width: 100%;
+}
+
+
+
+.customerContactsListSection{
+	background-color: rgb(168, 6, 197);
+	box-shadow: 5px 7px 15px 0 rgba(23,55,87,.1), 0 1px 5px 0 rgba(0,0,0,.05);
+	border: 1px solid #5e459a;
+	float: left;
+	width: 30%;
+	height: 100%;
+}
+
+.customerContactsListSection:hover{
+	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
+	    border: 1px solid #730190;
+	    border-bottom: 1px solid #4104a2;
+	    transform: translateY(-2px);
+}
+
+.customerContactsListSection #createButton{
+	margin-top: 20px;
+	margin-left: 144px;
+	width: 150px;
+	height: 30px;
+	background-color: #cd00b4;
+	border: 2px;
+	border-radius: 5px;
+}
+
+.customerContactsListSection #logoutButton{
+	float:left;
+	margin-top: 20px;
+	margin-left: 10px;
+	width: 66px;
+	height: 30px;
+	background-color: #ff02e0;
+	border: 2px;
+	border-radius: 5px;
+}
+
+
+.customerList{
+	line-height: 2; 
+}
+.customerList button{
+	float: right;
+	margin-right: 5px;
+	margin-top: 8px;
+}
+.customerList li{
+	border: 2px #a1a1a1;
+	border-radius: 5px;
+	max-width: 300px;
+	margin-top: 3px;
+	background-color: #6c09c5;
+}
+
+.customerDetailsSection{
+	padding-left: 40px;
+	margin-left: 2%;
+	float: left;
+	width: 30%;
+	line-height: 2;
+	height: 100%;
+	background-color: rgb(168, 6, 197);
+}
+
+.customerDetailsSection:hover{
+	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
+	    border: 1px solid #730190;
+	    border-bottom: 1px solid #4104a2;
+	    transform: translateY(-2px);
+}
+
+
+#customerDetailsForm{
+	padding-top: 30px
+}
+#customerDetailsForm .updateButton{
+	width: 150px;
+	height: 30px;
+	background-color: #cd00aa;
+	border: 2px;
+	border-radius: 5px;
+	margin-left: 80px;
+	margin-top: 30px;
+}
+
+.customerToDoListSection{
+	background-color: rgb(31, 54, 117);
+	margin-left: 2%;
+	height: 100%;
+	float: left;
+	width: 30%;
+	text-align: center;
+}
+.customerToDoListSection:hover{
+	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
+	    border: 1px solid #730190;
+	    border-bottom: 1px solid #4104a2;
+	    transform: translateY(-2px);
+}
+
+
+.customerToDoListSection ul{
+	text-align: left;
+}
+
+#ToDoHead{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: rgb(168, 6, 197);
+	text-align: center;
+}
+
+#customerToDoList span{
+	float: right;
+	cursor: pointer;
+}
+
+
+#customerToDoList li.checked{
+	text-decoration: line-through;
+	background-color: #75fff1;
+}

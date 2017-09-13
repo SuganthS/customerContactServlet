@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/springJson"/>
+	<classpathentry kind="lib" path="C:/Users/User.FULL327-WIN.000/Desktop/My Full BackUp/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User.FULL327-WIN.000/Desktop/My Full BackUp/java-json.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User.FULL327-WIN.000/Desktop/My Full BackUp/json-simple-1.1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>
