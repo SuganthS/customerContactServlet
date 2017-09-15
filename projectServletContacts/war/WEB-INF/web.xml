@@ -53,6 +53,41 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/UpdateCustomer</url-pattern>
 	</servlet-mapping>
 	
+	
+	<servlet>
+		<servlet-name>DeleteCustomer</servlet-name>
+		<servlet-class>com.servletContacts.DeleteCustomerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteCustomer</servlet-name>
+		<url-pattern>/DeleteCustomer</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>LoadCustomer</servlet-name>
+		<servlet-class>com.servletContacts.LoadCustomerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoadCustomer</servlet-name>
+		<url-pattern>/LoadCustomer</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>GoogleOAuth</servlet-name>
+		<servlet-class>com.servletContacts.GoogleOAuthServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoogleOAuth</servlet-name>
+		<url-pattern>/oauth2callback</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
 	<welcome-file-list>
 		<welcome-file>startup.jsp</welcome-file>
 	</welcome-file-list>

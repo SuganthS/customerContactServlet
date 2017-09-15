@@ -54,8 +54,8 @@
     </form>
 </div>
 
-       <!-- <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8888/oauth2callback.ds&response_type=code&client_id=517878068465-i77104v9ogdsveohgt7447p61dn0tnss.apps.googleusercontent.com&approval_prompt=force"><img src="login_gmail.png" alt="sign up with google"></a>
-     <a href="oauth2callback.ds"><img src="login_gmail.png" alt=""></a><br>-->
+        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://1-dot-contactsgae-179613.appspot.com/oauth2callback&response_type=code&client_id=439621455268-mqgr2qlcede8t691tgljslojbrq7kpv2.apps.googleusercontent.com&approval_prompt=force"><img src="login_gmail.png" alt="sign up with google"></a>
+     
     </div>
     
     

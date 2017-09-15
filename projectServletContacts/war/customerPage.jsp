@@ -41,9 +41,9 @@ if(session!=null && (session.getAttribute("sessionname")!=null)){
 	</div>
 	<div class="customerToDoListSection">
 		<div id="ToDoHead">
-			<h4>ToDoList</h4>
+			
 			<input type="text" id="newListValue" placeholder="Create New Task">
-			<button class="addButton" id="toDoAddButton">Add</button>
+			<button class="addButton" id="toDoAddButton">Add Task</button>
 		
 		<ul id="customerToDoList">
 			

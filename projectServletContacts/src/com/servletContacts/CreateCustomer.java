@@ -1,6 +1,7 @@
  package com.servletContacts;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class CreateCustomer extends HttpServlet {
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		HttpSession session = req.getSession();
+		res.setContentType("text/html");  
+        PrintWriter out=res.getWriter();
 		String data = req.getParameter("data");
 		
 		System.out.println("inside create customer"+data);
@@ -41,6 +44,7 @@ public class CreateCustomer extends HttpServlet {
 		
 		if(!(result.isEmpty())){
 			System.out.println("Duplicate cutomer email already exist");
+			out.print("failure");
 		}
 		else{
 			System.out.println("customerJDO");
@@ -50,6 +54,7 @@ public class CreateCustomer extends HttpServlet {
 			customer.setEmail(customerEmail);
 			//customer.setTodoList(li);
 			
+			out.print("success");
 			pm.makePersistent(customer);
 		}
 		} catch (JSONException e) {

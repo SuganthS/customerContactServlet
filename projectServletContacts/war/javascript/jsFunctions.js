@@ -25,11 +25,30 @@ var newToDoValue =  document.getElementById("newListValue");
 
 var count ="c";
 currentListId = "";
+currentCustEmail = "";
 toDoListItems = [];
 
 $(document).ready(function(){
 	
-	
+	$.ajax({
+		url:'/LoadCustomer',
+		type:'GET',
+		success:function(data){
+			console.log("data from servlet as jsonObject :"+data);
+			var jsdata = JSON.parse(data);
+			console.log("data from servlet as jsObject :"+jsdata);
+			
+			for(i=0;i<jsdata.length;i++){
+			var obj = jsdata[i];
+			console.log("object values name :"+obj.firstName+" and email :"+obj.email+" and todolist :"+obj.todoList);
+			
+			createCustomerFunc(obj.firstName,obj.email,obj.todoList);
+			}
+		},
+		failure:function(){
+			
+		}
+	});
 	
 });
 
@@ -41,7 +60,11 @@ var newCustomerTask = function(){
 	address.value='';
 
 	toDoUlList.innerHTML="";
-
+	
+	var ullist= customerList.parentNode.children[2].children;
+	for(var i=0;i<ullist.length;i++){
+		ullist[i].children[3].style.display="none";
+	}
 	customerForm.style.display="block";
 	createCustomer.style.display="block";
 	toDoSection.style.display="none";
@@ -49,6 +72,47 @@ var newCustomerTask = function(){
 
 
 }
+
+
+function createCustomerFunc(name, email, todolist){
+	var list = document.createElement("li");
+	var checkBox = document.createElement("input");
+	var label = document.createElement("label");
+	 updateButton = document.createElement("button");
+	var deleteButton = document.createElement("button");
+
+	list.id=count;
+	updateButton.id="updatebutton";
+	toDoListItems.length=0;
+	
+	checkBox.type = "checkbox";
+	label.innerText = name;
+	updateButton.innerText = "update";
+	deleteButton.innerText = "delete";
+	//console.log("sdgihsdghk"+firstName);
+	console.log(count);
+
+	list.appendChild(checkBox);
+	list.appendChild(label);
+	list.appendChild(deleteButton);
+	list.appendChild(updateButton);
+
+
+	customerList.appendChild(list);
+	var customerData = {"firstName":name,"email":email,"toDoListItems":todolist};
+	myJson = JSON.stringify(customerData);
+	localStorage.setItem(count,myJson);
+	
+	customerForm.style.display="none";
+	toDoSection.style.display="none";
+	count = count + 10;
+	label.addEventListener("click", showCustomerDetails);
+	deleteButton.addEventListener("click",deleteCustomerList);
+	updateButton.addEventListener("click",updateCustomerDetails);
+	updateButton.style.display="none";
+	toDoListItems.length=0;
+}
+
 
 createCustomerTask = function(){
 	
@@ -63,29 +127,7 @@ createCustomerTask = function(){
 			window.alert("invalid email");
 			return false;
 		}
-	var list = document.createElement("li");
-	var checkBox = document.createElement("input");
-	var label = document.createElement("label");
-	 updateButton = document.createElement("button");
-	var deleteButton = document.createElement("button");
-
-	list.id=count;
-	toDoListItems.length=0;
 	
-	checkBox.type = "checkbox";
-	label.innerText = firstName.value;
-	updateButton.innerText = "update";
-	deleteButton.innerText = "delete";
-	//console.log("sdgihsdghk"+firstName);
-	console.log(count);
-
-	list.appendChild(checkBox);
-	list.appendChild(label);
-	list.appendChild(deleteButton);
-	list.appendChild(updateButton);
-
-
-	customerList.appendChild(list);
 	
 	//toDoListItems[0] = "osfdgfjnk";
 	
@@ -99,10 +141,16 @@ createCustomerTask = function(){
 		url:'/CreateCustomer',
 		type:'POST',
 		data:'data='+jsonObj,
-		success:function(){
-			var customerData = {"firstName":firstName.value,"email":email.value,"toDoListItems":toDoListItems};
-			myJson = JSON.stringify(customerData);
-			localStorage.setItem(count,myJson);
+		success:function(data){
+			if(data=="failure"){
+				alert("customer id already exists");
+				customerForm.style.display="none";
+				toDoSection.style.display="none";
+			
+			}
+			else{
+				createCustomerFunc(firstName.value, email.value, toDoListItems);
+			}
 		},
 		failure:function(){
 			
@@ -118,13 +166,7 @@ createCustomerTask = function(){
 
 
 
-	customerForm.style.display="none";
-	toDoSection.style.display="none";
-	count = count + 10;
-	label.addEventListener("click", showCustomerDetails);
-	deleteButton.addEventListener("click",deleteCustomerList);
-	updateButton.addEventListener("click",updateCustomerDetails);
-	updateButton.style.display="none";
+	
 	}
 }
 
@@ -192,21 +234,41 @@ var showCustomerDetails = function(){
 	}
 
 
-
+currentCustEmail = data.email;
 }
 
 var deleteCustomerList = function(){
+	
+	
 	var list = this.parentNode;
 	var id = list.id;
 	var listToDelete = document.getElementById(id);
-	customerList.removeChild(listToDelete);
+	
+	var data = JSON.parse(localStorage.getItem(id));
+	var jsob = new Object();
+	jsob.custEmail = data.email;
 
-	localStorage.removeItem(id);
-	customerForm.style.display="none";
-	toDoSection.style.display="none";
-	//console.log("in delete");
-		toDoUlList.innerHTML="";
+	
+	var jsonob = JSON.stringify(jsob);
+	console.log("data in delete (json)"+jsonob);
 
+	
+	$.ajax({
+		url:'/DeleteCustomer',
+		type:'POST',
+		data:'data='+jsonob,
+		success:function(){
+			customerList.removeChild(listToDelete);
+			localStorage.removeItem(id);
+			customerForm.style.display="none";
+			toDoSection.style.display="none";
+			//console.log("in delete");
+				toDoUlList.innerHTML="";
+
+		}
+	});
+	
+	
 }
 
 var updateCustomerDetails =  function(){
@@ -272,8 +334,10 @@ toDoListItems.length=0;
 	console.log(toDoListItems);
 	
 	var jsObj = new Object();
+	jsObj.cusName =firstName.value;
 	jsObj.cusEmail =email.value;
 	jsObj.todo =toDoListItems;
+	jsObj.currentCustEmail =currentCustEmail;
 	
 	var jsonObj = JSON.stringify(jsObj);
 	
@@ -281,23 +345,29 @@ toDoListItems.length=0;
 		url:'/UpdateCustomer',
 		type:'post',
 		data:'data='+jsonObj,
-		success:function(){
-			console.log("success update");
+		success:function(data){
+			console.log("data in response of update "+data)
+			if((data=="creatednew")||(data=="update")){
+				var customerData = {"firstName":firstName.value,"email":email.value,"toDoListItems":toDoListItems};
+				var cusData = JSON.stringify(customerData);
+				localStorage.setItem(currentListId, cusData);
+				//console.log("id"+currentListId);
+				currentCustEmail = email.value;
+				/*var text1 = localStorage.getItem(currentListId);
+				var data1 = JSON.parse(text1);*/
+
+				toDoListItems.length=0;
+			}
+			else if(data=="alreadyexist"){
+				alert(" customer id :"+email.value+" already exist");
+				console.log("customer already exsist and previous email was "+currentCustEmail);
+				email.value=currentCustEmail;}
 		},
 		failure:function(){
 			
 		}
 	});
 
-	var customerData = {"firstName":firstName.value,"email":email.value,"toDoListItems":toDoListItems};
-	var cusData = JSON.stringify(customerData);
-	localStorage.setItem(currentListId, cusData);
-	//console.log("id"+currentListId);
-
-	/*var text1 = localStorage.getItem(currentListId);
-	var data1 = JSON.parse(text1);*/
-
-	toDoListItems.length=0;
 	
 
 

@@ -1,6 +1,7 @@
 package com.servletContacts;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class UpdateCustomerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException{
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PrintWriter out = res.getWriter();
 		HttpSession session = req.getSession();
 		List<String> todolist = new ArrayList<String>();
 		System.out.println("inside udpatecustomerservlet");
@@ -32,7 +34,9 @@ public class UpdateCustomerServlet extends HttpServlet {
 		try {
 			
 			json = new JSONObject(data);
-			String custName = json.get("cusEmail").toString();
+			String custName = json.get("cusName").toString();
+			String custEmail = json.get("cusEmail").toString();
+			String currentCustEmail = json.get("currentCustEmail").toString();
 			JSONArray jarray = json.getJSONArray("todo");
 			if(jarray!=null){
 				for(int i=0;i<jarray.length();i++){
@@ -41,13 +45,30 @@ public class UpdateCustomerServlet extends HttpServlet {
 			}
 			
 			Query q= pm.newQuery(CustomerJDO.class);
-			q.setFilter("adminEmail =='"+session.getAttribute("sessionname").toString()+"' && email =='"+custName+"'");
+			q.setFilter("adminEmail =='"+session.getAttribute("sessionname").toString()+"' && email =='"+custEmail+"'");
 			
 			List<CustomerJDO> result1 = (List<CustomerJDO>) q.execute();
+			if(result1.isEmpty()){
+				CustomerJDO customer = pm.getObjectById(CustomerJDO.class,result1.get(0).getKey());
+				customer.setFirstName(custName);
+				customer.setEmail(custEmail);
+				customer.setTodoList(todolist);
+				pm.makePersistent(customer);
+				out.write("creatednew");
+			}
+			else if(currentCustEmail.equals(custEmail)){
+				System.out.println(" == currentCustEmail :"+currentCustEmail+"and custEmail :"+custEmail);
 			CustomerJDO customer = pm.getObjectById(CustomerJDO.class,result1.get(0).getKey());
+			customer.setFirstName(custName);
+			customer.setEmail(custEmail);
 			customer.setTodoList(todolist);
 			pm.makePersistent(customer);
-			System.out.println("list :"+todolist);
+			out.write("update");
+			}
+			else if(!(currentCustEmail.equals(custEmail))){
+				System.out.println(" != currentCustEmail :"+currentCustEmail+"and custEmail :"+custEmail);
+				out.write("alreadyexist");
+			}
 			
 			
 		} catch (JSONException e) {

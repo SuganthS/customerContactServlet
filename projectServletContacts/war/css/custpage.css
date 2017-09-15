@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 body{
-	    background: -webkit-linear-gradient(left, rgb(140, 0, 198) , rgb(50, 0, 204));
+	    background: -webkit-linear-gradient(left, rgb(214, 251, 239) , rgb(166, 255, 202));
 }
 ul{
 	list-style-type: none;
@@ -17,9 +17,9 @@ ul{
 
 
 .customerContactsListSection{
-	background-color: rgb(168, 6, 197);
+	background-color: rgb(226, 245, 241);
 	box-shadow: 5px 7px 15px 0 rgba(23,55,87,.1), 0 1px 5px 0 rgba(0,0,0,.05);
-	border: 1px solid #5e459a;
+	border: 1px solid #d6fbe1;
 	float: left;
 	width: 30%;
 	height: 100%;
@@ -27,8 +27,8 @@ ul{
 
 .customerContactsListSection:hover{
 	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
-	    border: 1px solid #730190;
-	    border-bottom: 1px solid #4104a2;
+	    border: 1px solid #dddade;
+	    border-bottom: 1px solid #a8a3af;
 	    transform: translateY(-2px);
 }
 
@@ -37,10 +37,23 @@ ul{
 	margin-left: 144px;
 	width: 150px;
 	height: 30px;
-	background-color: #cd00b4;
+	background-color: #00cd6e;
+	color: white;
 	border: 2px;
 	border-radius: 5px;
 }
+
+#toDoAddButton{
+	margin-top: 11px;
+	margin-left: -7px;
+	width: 126px;
+	height: 26px;
+	background-color: #00cd6e;
+	color: white;
+	border: 2px;
+	border-radius: 3px;
+}
+
 
 .customerContactsListSection #logoutButton{
 	float:left;
@@ -48,26 +61,40 @@ ul{
 	margin-left: 10px;
 	width: 66px;
 	height: 30px;
-	background-color: #ff02e0;
+	background-color: #f12424;
+	color: #ffffff;
 	border: 2px;
 	border-radius: 5px;
 }
 
 
 .customerList{
-	line-height: 2; 
+	line-height: 2;
+	color: #5f3b3b;
 }
 .customerList button{
 	float: right;
 	margin-right: 5px;
 	margin-top: 8px;
+	width: 48px;
+	height: 19px;
+	background-color: rgb(230, 83, 83);
+	color: #ffffff;
+	border: 2px;
+	border-radius: 5px;
 }
+
+.customerList #updatebutton{
+	
+background-color: rgb(247, 135, 20);
+}
+
 .customerList li{
 	border: 2px #a1a1a1;
 	border-radius: 5px;
 	max-width: 300px;
 	margin-top: 3px;
-	background-color: #6c09c5;
+	background-color: #82e8b9;
 }
 
 .customerDetailsSection{
@@ -77,42 +104,51 @@ ul{
 	width: 30%;
 	line-height: 2;
 	height: 100%;
-	background-color: rgb(168, 6, 197);
+	background-color: rgb(226, 245, 241);
+	box-shadow: 5px 7px 15px 0 rgba(23,55,87,.1), 0 1px 5px 0 rgba(0,0,0,.05);
 }
 
 .customerDetailsSection:hover{
 	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
-	    border: 1px solid #730190;
-	    border-bottom: 1px solid #4104a2;
+	    border: 1px solid #dddade;
+	    border-bottom: 1px solid #a8a3af;
 	    transform: translateY(-2px);
 }
 
 
+#customerDetailsForm input{float: right;margin-right: 104px;height: 19px;padding-left: 9px;margin-top: 7px;border: 1px #9a8a8a;border-radius: 2px;color: #676262;background-color: #fffcfc;}
+
 #customerDetailsForm{
-	padding-top: 30px
+	padding-top: 30px;
+	color: #4a3c3c;
 }
 #customerDetailsForm .updateButton{
+	margin-left: 80px;
+	margin-top: 19px;
+	padding-bottom: 2px;
+	margin-bottom: 35px;
+	margin-right: 115px;
 	width: 150px;
 	height: 30px;
-	background-color: #cd00aa;
+	background-color: #00cd6e;
+	color: white;
 	border: 2px;
 	border-radius: 5px;
-	margin-left: 80px;
-	margin-top: 30px;
 }
 
 .customerToDoListSection{
-	background-color: rgb(31, 54, 117);
+	background-color: rgb(226, 245, 241);
 	margin-left: 2%;
 	height: 100%;
 	float: left;
 	width: 30%;
 	text-align: center;
+	box-shadow: 5px 7px 15px 0 rgba(23,55,87,.1), 0 1px 5px 0 rgba(0,0,0,.05);
 }
 .customerToDoListSection:hover{
 	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
-	    border: 1px solid #730190;
-	    border-bottom: 1px solid #4104a2;
+	    border: 1px solid #dddade;
+	    border-bottom: 1px solid #a8a3af;
 	    transform: translateY(-2px);
 }
 
@@ -121,20 +157,61 @@ ul{
 	text-align: left;
 }
 
+#newListValue {
+	float: left;
+    margin-left: 40px;
+    margin-top: 11px;
+    padding-left: 14px;
+    width: 208px;
+    height: 24px;
+    border: 1px #9a8a8a;
+    border-radius: 4px;
+    color: #676262;
+    background-color: #fffcfc;
+}
+
+#toDoListUpdate {
+	width: 150px;
+	height: 30px;
+	background-color: rgb(247, 135, 20);
+	color: white;
+	border: 2px;
+	border-radius: 5px;
+}
+
+
 #ToDoHead{
 	padding-top: 10px;
 	padding-bottom: 10px;
-	background-color: rgb(168, 6, 197);
+	background-color: rgb(226, 245, 241)rgb(168, 6, 197);
 	text-align: center;
 }
 
 #customerToDoList span{
 	float: right;
 	cursor: pointer;
+	padding-top: 3px;
+	padding-right: 14px;
 }
 
+#customerToDoList li{
+	
+height: 26px;
+	
+margin-right: 16px;
+	
+padding-left: 11px;
+	
+padding-top: 6px;
+	
+margin-bottom: 5px;
+	
+border-radius: 6px;
+	
+color: #484141;
+}
 
 #customerToDoList li.checked{
 	text-decoration: line-through;
-	background-color: #75fff1;
+	background-color: #82e8b9;
 }
