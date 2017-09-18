@@ -2,9 +2,16 @@ package com.servletContacts;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +41,29 @@ public class SignupServlet extends HttpServlet {
 				admin.setCustEmail(cusEmail);
 				admin.setCustPassword(cusPassword);
 				pm.makePersistent(admin);
-			}
+				
+				
+				String to = cusEmail;
+				String from = "suganth81994@gmail.com";
+				String host = "smtp.gmail.com";
+				Properties properties = System.getProperties();
+				properties.setProperty("mail.smtp.host", host);
+				Session session = Session.getDefaultInstance(properties);
+
+				try{
+					MimeMessage message = new MimeMessage(session);
+					message.setFrom(new InternetAddress(from));
+					message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+					
+					message.setSubject("New Signup ( Welcome )");
+					message.setContent("Welcome"+cusName+",", "text/html; charset=utf-8");
+
+					Transport.send(message);
+					System.out.println(message);
+					}catch (MessagingException mex) {
+						mex.printStackTrace();
+					}
+				}
 			}finally {
 				pm.close();
 			}
