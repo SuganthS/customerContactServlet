@@ -54,14 +54,12 @@
     </form>
 </div>
 
-        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://1-dot-contactsgae-179613.appspot.com/oauth2callback&response_type=code&client_id=439621455268-mqgr2qlcede8t691tgljslojbrq7kpv2.apps.googleusercontent.com&approval_prompt=force"><img src="login_gmail.png" alt="sign up with google"></a>
+        <button onclick="location.href='https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://1-dot-contactsgae-179613.appspot.com/oauth2callback&response_type=code&client_id=439621455268-mqgr2qlcede8t691tgljslojbrq7kpv2.apps.googleusercontent.com&approval_prompt=force'" class="googleButton">google</button>
      
     </div>
     
     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/script.js"></script>
-<script src="js/validation.js"></script>
+
 
 
    
