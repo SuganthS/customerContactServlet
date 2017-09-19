@@ -56,7 +56,7 @@ public class SignupServlet extends HttpServlet {
 					message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 					
 					message.setSubject("New Signup ( Welcome )");
-					message.setContent("Welcome"+cusName+",", "text/html; charset=utf-8");
+					message.setText("Welcome"+cusName+",");
 
 					Transport.send(message);
 					System.out.println(message);

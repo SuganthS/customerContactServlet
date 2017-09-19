@@ -36,6 +36,8 @@ public class UpdateCustomerServlet extends HttpServlet {
 			json = new JSONObject(data);
 			String custName = json.get("cusName").toString();
 			String custEmail = json.get("cusEmail").toString();
+			String custPhoNo = json.get("cusPhoNo").toString();
+			String custAddress = json.get("cusAddress").toString();
 			String currentCustEmail = json.get("currentCustEmail").toString();
 			JSONArray jarray = json.getJSONArray("todo");
 			if(jarray!=null){
@@ -52,6 +54,8 @@ public class UpdateCustomerServlet extends HttpServlet {
 				CustomerJDO customer = pm.getObjectById(CustomerJDO.class,result1.get(0).getKey());
 				customer.setFirstName(custName);
 				customer.setEmail(custEmail);
+				customer.setPhoNumber(custPhoNo);
+				customer.setAddress(custAddress);
 				customer.setTodoList(todolist);
 				pm.makePersistent(customer);
 				out.write("creatednew");
@@ -61,6 +65,8 @@ public class UpdateCustomerServlet extends HttpServlet {
 			CustomerJDO customer = pm.getObjectById(CustomerJDO.class,result1.get(0).getKey());
 			customer.setFirstName(custName);
 			customer.setEmail(custEmail);
+			customer.setPhoNumber(custPhoNo);
+			customer.setAddress(custAddress);
 			customer.setTodoList(todolist);
 			pm.makePersistent(customer);
 			out.write("update");

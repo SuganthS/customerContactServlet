@@ -27,8 +27,30 @@ public class CustomerJDO {
 	private String email;
 	
 	@Persistent
+	private String phoNumber;
+	
+	@Persistent
+	private String address;
+	
+	@Persistent
 	List<String> todoList = new ArrayList<String>();
 	
+	public String getPhoNumber() {
+		return phoNumber;
+	}
+
+	public void setPhoNumber(String phonNumber) {
+		this.phoNumber = phonNumber;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public String getAdminEmail() {
 		return adminEmail;
 	}

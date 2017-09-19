@@ -5,16 +5,14 @@ var newCustomer = document.getElementById("createButton");
 var logout = document.getElementById("logoutButton");
 var firstName = document.getElementById("firstName");
 var email = document.getElementById("email");
-var phoNumber = document.getElementById("phoNumber");
+var phoNumber = document.getElementById("phoneNumber");
 var address = document.getElementById("address");
 
 var customerForm = document.getElementById("customerDetailsForm");
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
 
-
 var createCustomer = document.getElementById("createCustomer");
 customerForm.style.display="none";
-
 
 var toDoSection = document.getElementById("ToDoHead");
 toDoSection.style.display="none";
@@ -42,7 +40,7 @@ $(document).ready(function(){
 			var obj = jsdata[i];
 			console.log("object values name :"+obj.firstName+" and email :"+obj.email+" and todolist :"+obj.todoList);
 			
-			createCustomerFunc(obj.firstName,obj.email,obj.todoList);
+			createCustomerFunc(obj.firstName,obj.email,obj.phoNumber,obj.address,obj.todoList);
 			}
 		},
 		failure:function(){
@@ -56,7 +54,7 @@ var newCustomerTask = function(){
 	//console.log("hai");
 	firstName.value='';
 	email.value='';
-	phoneNumber.value='';
+	phoNumber.value='';
 	address.value='';
 
 	toDoUlList.innerHTML="";
@@ -74,7 +72,7 @@ var newCustomerTask = function(){
 }
 
 
-function createCustomerFunc(name, email, todolist){
+function createCustomerFunc(name, email, phono, address, todolist){
 	var list = document.createElement("li");
 	var checkBox = document.createElement("input");
 	var label = document.createElement("label");
@@ -99,7 +97,7 @@ function createCustomerFunc(name, email, todolist){
 
 
 	customerList.appendChild(list);
-	var customerData = {"firstName":name,"email":email,"toDoListItems":todolist};
+	var customerData = {firstName:name,email:email,phoNumber:phono,address:address,toDoListItems:todolist};
 	myJson = JSON.stringify(customerData);
 	localStorage.setItem(count,myJson);
 	
@@ -119,6 +117,7 @@ createCustomerTask = function(){
 	console.log("length of name:"+firstName.value.length);
 
 	if((firstName.value.trim().length==0) || (email.value.trim().length==0)){
+		window.alert("Please enter Name and email address");
 		return false;
 	}
 	else{
@@ -134,6 +133,8 @@ createCustomerTask = function(){
 	var jsObj = new Object();
 	jsObj.firstName = firstName.value;
 	jsObj.email = email.value;
+	jsObj.phoNumber = phoNumber.value;
+	jsObj.address = address.value;
 	
 	var jsonObj = JSON.stringify(jsObj);
 	
@@ -149,7 +150,7 @@ createCustomerTask = function(){
 			
 			}
 			else{
-				createCustomerFunc(firstName.value, email.value, toDoListItems);
+				createCustomerFunc(firstName.value, email.value, phoNumber.value, address.value, toDoListItems);
 			}
 		},
 		failure:function(){
@@ -203,6 +204,8 @@ var showCustomerDetails = function(){
 
 	firstName.value=data.firstName;
 	email.value=data.email;
+	phoNumber.value = data.phoNumber;
+	address.value = data.address;
 
 
 
@@ -274,7 +277,7 @@ var deleteCustomerList = function(){
 var updateCustomerDetails =  function(){
 
 	var listid=this.parentNode.id;
-	var customerData = {"firstName":firstName.value,"email":email.value};
+	var customerData = {firstName:firstName.value, email:email.value, phoNumber:phoNumber.value, address:address.value};
 	myJson = JSON.stringify(customerData);
 	localStorage.setItem(listid,myJson);
 	updateToDoListTask();
@@ -336,6 +339,8 @@ toDoListItems.length=0;
 	var jsObj = new Object();
 	jsObj.cusName =firstName.value;
 	jsObj.cusEmail =email.value;
+	jsObj.cusPhoNo = phoNumber.value;
+	jsObj.cusAddress = address.value;
 	jsObj.todo =toDoListItems;
 	jsObj.currentCustEmail =currentCustEmail;
 	
@@ -348,7 +353,7 @@ toDoListItems.length=0;
 		success:function(data){
 			console.log("data in response of update "+data)
 			if((data=="creatednew")||(data=="update")){
-				var customerData = {"firstName":firstName.value,"email":email.value,"toDoListItems":toDoListItems};
+				var customerData = {firstName:firstName.value,email:email.value,phoNumber:phoNumber.value,address:address.value,toDoListItems:toDoListItems};
 				var cusData = JSON.stringify(customerData);
 				localStorage.setItem(currentListId, cusData);
 				//console.log("id"+currentListId);

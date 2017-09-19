@@ -46,7 +46,7 @@ ul{
 #toDoAddButton{
 	margin-top: 11px;
 	margin-left: -7px;
-	width: 126px;
+	width: 22%;
 	height: 26px;
 	background-color: #00cd6e;
 	color: white;
@@ -161,15 +161,15 @@ padding-left: 4px;
 
 #newListValue {
 	float: left;
-    margin-left: 40px;
-    margin-top: 11px;
-    padding-left: 14px;
-    width: 208px;
-    height: 24px;
-    border: 1px #9a8a8a;
-    border-radius: 4px;
-    color: #676262;
-    background-color: #fffcfc;
+	margin-left: 40px;
+	margin-top: 11px;
+	padding-left: 14px;
+	width: 60%;
+	height: 24px;
+	border: 1px #9a8a8a;
+	border-radius: 4px;
+	color: #676262;
+	background-color: #fffcfc;
 }
 
 #toDoListUpdate {

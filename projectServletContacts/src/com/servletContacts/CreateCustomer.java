@@ -34,8 +34,11 @@ public class CreateCustomer extends HttpServlet {
 		
 		try{
 		json = new JSONObject(data);
+		System.out.println(json);
 		String customerFName = json.getString("firstName");
 		String customerEmail = json.getString("email");
+		String customerPhoNo = json.getString("phoNumber");
+		String customerAddress = json.getString("address");
 		System.out.println("fname :"+customerFName+" and email :"+customerEmail);
 		
 		Query q = pm.newQuery(CustomerJDO.class);
@@ -52,6 +55,8 @@ public class CreateCustomer extends HttpServlet {
 			customer.setAdminEmail(session.getAttribute("sessionname").toString());
 			customer.setFirstName(customerFName);
 			customer.setEmail(customerEmail);
+			customer.setPhoNumber(customerPhoNo);
+			customer.setAddress(customerAddress);
 			//customer.setTodoList(li);
 			
 			out.print("success");

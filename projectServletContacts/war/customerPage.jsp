@@ -33,7 +33,7 @@ if(session!=null && (session.getAttribute("sessionname")!=null)){
 		<form id="customerDetailsForm">
 			First Name :<input type="text" id="firstName" name="firstName"><br>
 			Email  :<input type="text" id="email" name="lastName"><br>
-			Phone Number : <input type="text" id="phoneNumber" name="phoneNumber"><br>
+			Phone Number : <input type="text" id="phoneNumber" name="phoneNumber" ><br>
 			Address    :<input type="text" id="address" name="address"><br>
 			
 			<input class="updateButton" id="createCustomer" style="display:none" type="button" value="create customer"><br>
