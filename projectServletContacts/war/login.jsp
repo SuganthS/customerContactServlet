@@ -54,7 +54,7 @@
     </form>
 </div>
 
-        <button onclick="location.href='https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://1-dot-contactsgae-179613.appspot.com/oauth2callback&response_type=code&client_id=439621455268-mqgr2qlcede8t691tgljslojbrq7kpv2.apps.googleusercontent.com&approval_prompt=force'" class="googleButton">google</button>
+        <button onclick="location.href='https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://1-dot-contactsgae-179613.appspot.com/oauth2callback&response_type=code&client_id=439621455268-mqgr2qlcede8t691tgljslojbrq7kpv2.apps.googleusercontent.com&approval_prompt=force'" class="googleButton">sign in with google</button>
      
     </div>
     
