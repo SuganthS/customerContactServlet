@@ -6,20 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link rel = "stylesheet"
-   type = "text/css"
-   href = "css/style.css" />
+<link rel = "stylesheet" type = "text/css" href = "css/cssLoginPage.css" />
 </head>
 <body>
 
-<div class="form">
-
-<form action="login.jsp" method="post">
-<input class="button" type="submit" value="Get Startedd"></input>
-</form>
-
-
-</div>
+	<div class="form">
+		<form action="login.jsp" method="post">
+		<input class="button" type="submit" value="Get Startedd"></input>
+		</form>
+	</div>
 
 </body>
 </html>
