@@ -22,7 +22,7 @@ if(session!=null && (session.getAttribute("sessionname")!=null)){
 	<div class="customerPageSection">
 		<div class="customerContactsListSection">
 			<span><input type="button" id="logoutButton" value="logout" onclick="location.href='/Logout';"></span>
-			<span><input type="button" id="createButton" value="Create Customer"></span>
+			<span><input type="button" id="createButton" value="Add +1"></span>
 			<ul class="customerList" id="customerList">
 				
 			</ul>
