@@ -16,22 +16,22 @@ import com.google.gson.Gson;
 
 public class LoadCustomerServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException{
-		
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
 		HttpSession session = req.getSession();
 		String custEmail = session.getAttribute("sessionname").toString();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		PrintWriter out = res.getWriter();
-		String output ="";
+		String output = "";
 		Query q = pm.newQuery(CustomerJDO.class);
-		q.setFilter("adminEmail =='"+custEmail+"'");
-		
-		List<CustomerJDO> result =(List<CustomerJDO>)q.execute();
-		
-		System.out.println("no of cusotomer :"+result.size());
+		q.setFilter("adminEmail =='" + custEmail + "'");
+
+		List<CustomerJDO> result = (List<CustomerJDO>) q.execute();
+
+		System.out.println("no of cusotomer :" + result.size());
 		Gson gson = new Gson();
 		output = gson.toJson(result);
 		out.write(output);
-		
+
 	}
 }

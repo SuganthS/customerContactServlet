@@ -20,23 +20,22 @@ import org.json.JSONObject;
 
 public class GoogleOAuthServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException{
-		
-		
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
 		HttpSession session = req.getSession();
-		String auth_code= req.getParameter("code");
+		String auth_code = req.getParameter("code");
 		System.out.println("successfully came back...............");
 		System.out.println("This is git checking");
-		//String auth_code = code;
+		// String auth_code = code;
 		System.out.println(auth_code);
-		
+
 		// Code for getting access token from the authorization_code.....
-		
-		
+
 		System.out.println("Before");
 		URL url = new URL("https://www.googleapis.com/oauth2/v4/token?"
 				+ "client_id=439621455268-mqgr2qlcede8t691tgljslojbrq7kpv2.apps.googleusercontent.com"
-				+ "&client_secret=GVCIumIfCkcG47UqF0AbaX8f&" + "redirect_uri=http://1-dot-contactsgae-179613.appspot.com/oauth2callback&"
+				+ "&client_secret=GVCIumIfCkcG47UqF0AbaX8f&"
+				+ "redirect_uri=http://1-dot-contactsgae-179613.appspot.com/oauth2callback&"
 				+ "grant_type=authorization_code&" + "code=" + auth_code);
 		System.out.println("After");
 
@@ -52,7 +51,7 @@ public class GoogleOAuthServlet extends HttpServlet {
 		}
 		in.close();
 		System.out.println(response.toString());
-//		JSONParser parser = new JSONParser();
+		// JSONParser parser = new JSONParser();
 		JSONObject json_access_token = null;
 		try {
 			json_access_token = new JSONObject(response);
@@ -88,42 +87,39 @@ public class GoogleOAuthServlet extends HttpServlet {
 		JSONObject json_user_details = null;
 		try {
 			json_user_details = new JSONObject(responsee);
-			
-			System.out.println("email of customer :"+json_user_details.get("email"));
+
+			System.out.println("email of customer :" + json_user_details.get("email"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
-PersistenceManager pm = PMF.get().getPersistenceManager();
-		
+
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+
 		try {
 			Query q = pm.newQuery(AdminJDO.class);
 			String custEmail = json_user_details.get("email").toString();
 			String custName = json_user_details.get("name").toString();
 
-			q.setFilter("custEmail == '"+custEmail+"'");
-			List<AdminJDO> result = (List<AdminJDO>)q.execute();
-			if(!(result.isEmpty())) {
+			q.setFilter("custEmail == '" + custEmail + "'");
+			List<AdminJDO> result = (List<AdminJDO>) q.execute();
+			if (!(result.isEmpty())) {
 				session.setAttribute("sessionname", custEmail);
 				res.sendRedirect("customerPage.jsp");
-			}
-			else {
-				AdminJDO admin= new AdminJDO();
+			} else {
+				AdminJDO admin = new AdminJDO();
 				admin.setCustName(custName);
 				admin.setCustEmail(custEmail);
-				//admin.setCustPassword(cusPassword);
+				// admin.setCustPassword(cusPassword);
 				pm.makePersistent(admin);
 				session.setAttribute("sessionname", custEmail);
 				res.sendRedirect("customerPage.jsp");
 			}
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				pm.close();
-			}
-		
-		
-		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			pm.close();
+		}
+
 	}
 }

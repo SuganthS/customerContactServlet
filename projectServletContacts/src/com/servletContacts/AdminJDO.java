@@ -13,13 +13,13 @@ public class AdminJDO {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key key;
-	
+
 	@Persistent
 	String custName;
-	
+
 	@Persistent
 	String custEmail;
-	
+
 	@Persistent
 	String custPassword;
 
@@ -54,6 +54,5 @@ public class AdminJDO {
 	public void setCustPassword(String custPassword) {
 		this.custPassword = custPassword;
 	}
-	
-	
+
 }

@@ -12,29 +12,29 @@ import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
 public class CustomerJDO {
-	
+
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key key;
-	
+
 	@Persistent
 	private String adminEmail;
-	
+
 	@Persistent
 	private String firstName;
-	
+
 	@Persistent
 	private String email;
-	
+
 	@Persistent
 	private String phoNumber;
-	
+
 	@Persistent
 	private String address;
-	
+
 	@Persistent
 	List<String> todoList = new ArrayList<String>();
-	
+
 	public String getPhoNumber() {
 		return phoNumber;
 	}
@@ -59,7 +59,7 @@ public class CustomerJDO {
 		this.adminEmail = adminEmail;
 	}
 
-		public Key getKey() {
+	public Key getKey() {
 		return key;
 	}
 
@@ -91,8 +91,4 @@ public class CustomerJDO {
 		this.todoList = todoList;
 	}
 
-	
-
-	
-	
 }

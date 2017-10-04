@@ -15,32 +15,29 @@ import com.servletContacts.PMF;
 
 public class LoginServlet extends HttpServlet {
 
-	protected void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException{
-		
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		HttpSession session = req.getSession();
+		
 		String cusEmail = req.getParameter("login_email");
 		String cusPassword = req.getParameter("login_password");
-		
+
 		try {
-			Query q= pm.newQuery(AdminJDO.class);
-			q.setFilter("custEmail =='"+cusEmail+"' && custPassword =='"+cusPassword+"'");
-			List<AdminJDO> result = (List<AdminJDO>)q.execute();
-			if(!(result.isEmpty())) {
+			Query q = pm.newQuery(AdminJDO.class);
+			q.setFilter("custEmail =='" + cusEmail + "' && custPassword =='" + cusPassword + "'");
+			List<AdminJDO> result = (List<AdminJDO>) q.execute();
+			if (!(result.isEmpty())) {
 				session.setAttribute("sessionname", cusEmail);
 				res.sendRedirect("customerPage.jsp");
-			}
-			else
-			{
-				
+			} else {
+				session.setAttribute("error", "login_invalid");
 				res.sendRedirect("login.jsp");
 			}
-		}finally {
+		} finally {
 			pm.close();
 		}
-		
-		
+
 	}
-	
-	
+
 }

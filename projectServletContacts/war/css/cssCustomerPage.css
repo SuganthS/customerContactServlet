@@ -1,38 +1,57 @@
 @charset "ISO-8859-1";
-body{
-	    background: -webkit-linear-gradient(left, rgb(214, 251, 239) , rgb(166, 255, 202));
+
+body {
+	background: -webkit-linear-gradient(left, rgb(214, 251, 239),
+		rgb(166, 255, 202));
 }
-ul{
+
+ul {
 	list-style-type: none;
 }
 
-.customerPageSection{
+.alert {
+	background-color: #f44336; /* Red */
+	color: white;
+	margin-left: 46%;
+	width: 185px;
+	border-radius: 9px;
+	height: 16px;
+	padding-bottom: 8px;
+	padding-top: 2px;
+	align-content: center;
+	text-align: center;
+}
+
+.customerPageSection {
 	float: left;
+	position: fixed;
+	top: 22px;
 	background-blend-mode: color-burn;
 	margin-top: 3%;
 	margin-left: 2%;
 	width: 100%;
+	/* position: fixed; */
 }
 
-
-
-.customerContactsListSection{
+.customerContactsListSection {
 	background-color: rgb(226, 245, 241);
-	box-shadow: 5px 7px 15px 0 rgba(23,55,87,.1), 0 1px 5px 0 rgba(0,0,0,.05);
+	box-shadow: 5px 7px 15px 0 rgba(23, 55, 87, .1), 0 1px 5px 0
+		rgba(0, 0, 0, .05);
 	border: 1px solid #d6fbe1;
 	float: left;
 	width: 30%;
 	height: 100%;
 }
 
-.customerContactsListSection:hover{
-	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
-	    border: 1px solid #dddade;
-	    border-bottom: 1px solid #a8a3af;
-	    transform: translateY(-2px);
+.customerContactsListSection:hover {
+	box-shadow: 0 7px 12px 0 rgba(23, 55, 87, .1), 0 1px 7px 0
+		rgba(0, 0, 0, .08);
+	border: 1px solid #dddade;
+	border-bottom: 1px solid #a8a3af;
+	transform: translateY(-2px);
 }
 
-.customerContactsListSection #createButton{
+.customerContactsListSection #createButton {
 	margin-top: 20px;
 	margin-left: 144px;
 	width: 150px;
@@ -43,7 +62,7 @@ ul{
 	border-radius: 5px;
 }
 
-#toDoAddButton{
+#toDoAddButton {
 	margin-top: 11px;
 	margin-left: -7px;
 	width: 22%;
@@ -54,9 +73,8 @@ ul{
 	border-radius: 3px;
 }
 
-
-.customerContactsListSection #logoutButton{
-	float:left;
+.customerContactsListSection #logoutButton {
+	float: left;
 	margin-top: 20px;
 	margin-left: 10px;
 	width: 66px;
@@ -67,12 +85,12 @@ ul{
 	border-radius: 5px;
 }
 
-
-.customerList{
+.customerList {
 	line-height: 2;
 	color: #5f3b3b;
 }
-.customerList button{
+
+.customerList button {
 	float: right;
 	margin-right: 5px;
 	margin-top: 8px;
@@ -84,14 +102,12 @@ ul{
 	border-radius: 5px;
 }
 
-.customerList #updatebutton{
-	
-background-color: rgba(88, 150, 243, 0.98);
-	
-padding-left: 4px;
+.customerList #updatebutton {
+	background-color: rgba(88, 150, 243, 0.98);
+	padding-left: 4px;
 }
 
-.customerList li{
+.customerList li {
 	border: 2px #a1a1a1;
 	border-radius: 5px;
 	max-width: 300px;
@@ -100,7 +116,7 @@ padding-left: 4px;
 	padding-left: 12px;
 }
 
-.customerDetailsSection{
+.customerDetailsSection {
 	padding-left: 40px;
 	margin-left: 2%;
 	float: left;
@@ -108,24 +124,36 @@ padding-left: 4px;
 	line-height: 2;
 	height: 100%;
 	background-color: rgb(226, 245, 241);
-	box-shadow: 5px 7px 15px 0 rgba(23,55,87,.1), 0 1px 5px 0 rgba(0,0,0,.05);
+	box-shadow: 5px 7px 15px 0 rgba(23, 55, 87, .1), 0 1px 5px 0
+		rgba(0, 0, 0, .05);
 }
 
-.customerDetailsSection:hover{
-	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
-	    border: 1px solid #dddade;
-	    border-bottom: 1px solid #a8a3af;
-	    transform: translateY(-2px);
+.customerDetailsSection:hover {
+	box-shadow: 0 7px 12px 0 rgba(23, 55, 87, .1), 0 1px 7px 0
+		rgba(0, 0, 0, .08);
+	border: 1px solid #dddade;
+	border-bottom: 1px solid #a8a3af;
+	transform: translateY(-2px);
 }
 
+#customerDetailsForm input {
+	float: right;
+	margin-right: 104px;
+	height: 19px;
+	padding-left: 9px;
+	margin-top: 7px;
+	border: 1px #9a8a8a;
+	border-radius: 2px;
+	color: #676262;
+	background-color: #fffcfc;
+}
 
-#customerDetailsForm input{float: right;margin-right: 104px;height: 19px;padding-left: 9px;margin-top: 7px;border: 1px #9a8a8a;border-radius: 2px;color: #676262;background-color: #fffcfc;}
-
-#customerDetailsForm{
+#customerDetailsForm {
 	padding-top: 30px;
 	color: #4a3c3c;
 }
-#customerDetailsForm .updateButton{
+
+#customerDetailsForm .updateButton {
 	margin-left: 80px;
 	margin-top: 19px;
 	padding-bottom: 2px;
@@ -139,24 +167,26 @@ padding-left: 4px;
 	border-radius: 5px;
 }
 
-.customerToDoListSection{
+.customerToDoListSection {
 	background-color: rgb(226, 245, 241);
 	margin-left: 2%;
 	height: 100%;
 	float: left;
 	width: 30%;
 	text-align: center;
-	box-shadow: 5px 7px 15px 0 rgba(23,55,87,.1), 0 1px 5px 0 rgba(0,0,0,.05);
-}
-.customerToDoListSection:hover{
-	    box-shadow: 0 7px 12px 0 rgba(23,55,87,.1), 0 1px 7px 0 rgba(0,0,0,.08);
-	    border: 1px solid #dddade;
-	    border-bottom: 1px solid #a8a3af;
-	    transform: translateY(-2px);
+	box-shadow: 5px 7px 15px 0 rgba(23, 55, 87, .1), 0 1px 5px 0
+		rgba(0, 0, 0, .05);
 }
 
+.customerToDoListSection:hover {
+	box-shadow: 0 7px 12px 0 rgba(23, 55, 87, .1), 0 1px 7px 0
+		rgba(0, 0, 0, .08);
+	border: 1px solid #dddade;
+	border-bottom: 1px solid #a8a3af;
+	transform: translateY(-2px);
+}
 
-.customerToDoListSection ul{
+.customerToDoListSection ul {
 	text-align: left;
 }
 
@@ -182,39 +212,31 @@ padding-left: 4px;
 	border-radius: 5px;
 }
 
-
-#ToDoHead{
+#ToDoHead {
 	padding-top: 10px;
 	padding-bottom: 10px;
-	background-color: rgb(226, 245, 241)rgb(168, 6, 197);
+	background-color: rgb(226, 245, 241) rgb(168, 6, 197);
 	text-align: center;
 }
 
-#customerToDoList span{
+#customerToDoList span {
 	float: right;
 	cursor: pointer;
 	padding-top: 3px;
 	padding-right: 14px;
 }
 
-#customerToDoList li{
-	
-height: 26px;
-	
-margin-right: 16px;
-	
-padding-left: 11px;
-	
-padding-top: 6px;
-	
-margin-bottom: 5px;
-	
-border-radius: 6px;
-	
-color: #484141;
+#customerToDoList li {
+	height: 26px;
+	margin-right: 16px;
+	padding-left: 11px;
+	padding-top: 6px;
+	margin-bottom: 5px;
+	border-radius: 6px;
+	color: #484141;
 }
 
-#customerToDoList li.checked{
+#customerToDoList li.checked {
 	text-decoration: line-through;
 	background-color: #82e8b9;
 }
